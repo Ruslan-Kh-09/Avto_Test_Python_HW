@@ -10,4 +10,3 @@ def s_square(side):
 
 num_side = float(input("Введите длину стороны квадрата: "))
 print(f"Площадь вашего квадрата = {s_square(num_side)}")
-

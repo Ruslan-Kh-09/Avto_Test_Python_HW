@@ -15,4 +15,3 @@ def fizz_buzz(n):
 
 
 fizz_buzz(n)
-

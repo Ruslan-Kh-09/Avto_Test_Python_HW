@@ -6,4 +6,3 @@ def is_year_leap(year):
 num = int(input("Введите год: "))
 result = is_year_leap(num)
 print(f"{num} год  - {result}")
-
