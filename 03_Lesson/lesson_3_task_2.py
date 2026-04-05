@@ -16,3 +16,4 @@ catalog = [
 print('Каталог смартфонов:')
 for phone in catalog:
     print(f'{phone.brand} - {phone.model}, {phone.phone_number}')
+
