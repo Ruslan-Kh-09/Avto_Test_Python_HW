@@ -26,4 +26,3 @@ print(f"Отправление {my_mailing.track}"
       f" из {format_address(from_addr)}"
       f" в {format_address(to_addr)}."
       f" Стоимость {my_mailing.cost} рублей.")
-
