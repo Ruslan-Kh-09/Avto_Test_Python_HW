@@ -17,4 +17,3 @@ button = wait.until(EC.element_to_be_clickable((By.XPATH, button_xpath)))
 button.click()
 
 driver.quit()
-

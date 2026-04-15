@@ -24,4 +24,3 @@ try:
 finally:
 
     driver.quit()
-

@@ -27,4 +27,3 @@ alert = driver.switch_to.alert
 alert.accept()
 
 driver.quit()
-
