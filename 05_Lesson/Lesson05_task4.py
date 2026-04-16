@@ -21,6 +21,9 @@ try:
 
     time.sleep(1)
 
+    flash_message = driver.find_element(By.ID, "flash").text
+    print(flash_message)
+
 finally:
 
     driver.quit()
