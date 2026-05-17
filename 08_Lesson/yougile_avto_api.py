@@ -4,7 +4,7 @@ import requests
 class YougileAvtoApi:
     def __init__(self, token: str):
         # Базовый URL для запросов
-        self.base_url = "https://yougile.com"
+        self.base_url = "https://ru.yougile.com"
         self.headers = {
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json"
