@@ -18,7 +18,7 @@ class CalculatorPage:
     def open(self) -> None:
         """Открывает веб-страницу калькулятора."""
         self.driver.get(
-            "https://bonigarcia.dev"
+            "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html"
         )
 
     @allure.step("Установить задержку вычислений в {seconds} секунд(ы)")

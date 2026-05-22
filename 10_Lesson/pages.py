@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LoginPage:
@@ -59,16 +59,15 @@ class CartPage:
     def __init__(self, driver: WebDriver) -> None:
         """Инициализация страницы с передачей драйвера браузера."""
         self.driver: WebDriver = driver
-        self._checkout_btn: tuple[str, str] = (By.CSS_SELECTOR, "#checkout")
+        # Заменили селектор на ID для максимальной надежности в DOM-дереве
+        self._checkout_btn: tuple[str, str] = (By.ID, "checkout")
 
     @allure.step("Нажать на кнопку оформления заказа (Checkout)")
     def click_checkout(self) -> None:
-        """Ожидает появление кнопки Checkout
-         на экране и переходит к форме заказа."""
-        # Умный секундомер: ждем до 10 секунд,
-        # пока кнопка станет кликабельной на экране
+        """Ожидает появление кнопки Checkout на экране и переходит к форме."""
+        # Используем более надежное ожидание видимости элемента
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self._checkout_btn)
+            EC.visibility_of_element_located(self._checkout_btn)
         )
         self.driver.find_element(*self._checkout_btn).click()
 
@@ -87,11 +86,11 @@ class CheckoutPage:
             By.CSS_SELECTOR, ".summary_total_label"
         )
 
-    @allure.step("Заполнить форму доставки данными: "
-                 "{first} {last}, индекс {zip_code}")
+    @allure.step(
+        "Заполнить форму доставки данными: {first} {last}, индекс {zip_code}"
+    )
     def fill_checkout_form(self, first: str, last: str, zip_code: str) -> None:
-        """Заполняет поля имени, фамилии,
-        индекса и переходит на страницу итога."""
+        """Заполняет поля имени, фамилии, индекса и переходит дальше."""
         self.driver.find_element(*self._first_name).send_keys(first)
         self.driver.find_element(*self._last_name).send_keys(last)
         self.driver.find_element(*self._postal_code).send_keys(zip_code)
@@ -101,3 +100,4 @@ class CheckoutPage:
     def get_total_price(self) -> str:
         """Получает и возвращает текстовое значение итоговой стоимости."""
         return self.driver.find_element(*self._total_label).text
+
